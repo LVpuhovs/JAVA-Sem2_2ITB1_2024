@@ -1,6 +1,6 @@
-package Seminar_2;
+package model;
 
-public class seminar_2 {
+public class Professor {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
