@@ -65,7 +65,7 @@ public class MainService {
 			System.out.println(temp);
 		}
 		
-		for (Student temp : allStudents) {
+
 			try {
 				System.out.println(calculatedGrade(st2));
 				System.out.println(weightedAverage(st2));
@@ -73,7 +73,8 @@ public class MainService {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+		
+
 	}
 	
 	public static float calculatedGrade(Student student) throws Exception {

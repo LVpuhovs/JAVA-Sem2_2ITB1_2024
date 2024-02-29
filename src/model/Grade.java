@@ -52,9 +52,9 @@ public class Grade {
 	}
 	public Grade(int value, Course course, Student student) {
 		setg_ID();
-		setvalue(4);
-		setCourse(new Course());
-		setStudent(new Student());
+		setvalue(value);
+		setCourse(course);
+		setStudent(student);
 	}
 	public String toString() {
 		return student.getName() + " " + student.getSurname() + " gets " + value + " in course " + course;
