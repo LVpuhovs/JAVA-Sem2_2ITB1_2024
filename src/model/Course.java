@@ -46,7 +46,7 @@ public class Course {
 		setc_ID();
 		settitle("prog JAVA");
 		setCP(4);
-		setprofessor(professor);
+		setprofessor(new Professor());
 	}
 	
 	public Course(String title,int creditPoints, Professor professor) {
@@ -54,5 +54,9 @@ public class Course {
 		settitle(title);
 		setCP(creditPoints);
 		setprofessor(professor);
+	}
+	
+	public String toString() {
+		return c_ID + ": " + title + "(" + creditPoints+ ") KP, " + professor;
 	}
 }
