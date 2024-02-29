@@ -22,7 +22,7 @@ public class Course {
 	}
 	
 	public void settitle(String title) {
-		if (title != null && title.matches("[A-Za-z]+"))
+		if (title != null)
 		this.title = title;
 		else
 			this.title = "undefinied";

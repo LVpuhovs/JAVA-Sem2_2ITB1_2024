@@ -27,7 +27,7 @@ public class Professor {
 	
 	
 	public void setName(String name) {
-		if (name != null && name.matches("[A-Z]{1}+[a-z]+ "))
+		if (name != null && name.matches("[A-Z]{1}+[a-z]+"))
 		this.name = name;
 	}
 	public void setpID() {
@@ -35,14 +35,14 @@ public class Professor {
 		counter++;
 	}
 	public void setSurname(String surname) {
-		if (name != null && name.matches("[A-Z]{1}+[a-z]+ "))
+		if (name != null && name.matches("[A-Z]{1}+[a-z]+"))
 		this.surname = surname;
 	}
 	public void setDegree(Degree degree) {
 		if (degree != null)
 		this.degree = degree;
 		else
-			this.degree  = degree.other;
+			this.degree  = Degree.other;
 	}
 	
 	
@@ -51,7 +51,7 @@ public class Professor {
 		setpID();
 		setName("Juris");
 		setSurname("Berzins");
-		setDegree(degree.other);
+		setDegree(Degree.other);
 	}
 	
 	public Professor(String name, String surname, Degree degree) {

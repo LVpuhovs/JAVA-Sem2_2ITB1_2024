@@ -19,7 +19,7 @@ public class Student {
 	}
 	
 	public void setName(String name) {
-		if (name != null && name.matches("[A-Z]{1}+[a-z]+ "))
+		if (name != null && name.matches("[A-Z]{1}+[a-z]+"))
 		this.name = name;
 	}
 	public void setst_ID() {
@@ -27,7 +27,7 @@ public class Student {
 		counter++;
 	}
 	public void setSurname(String surname) {
-		if (name != null && name.matches("[A-Z]{1}+[a-z]+ "))
+		if (name != null && name.matches("[A-Z]{1}+[a-z]+"))
 		this.surname = surname;
 	}
 	
