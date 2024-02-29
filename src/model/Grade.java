@@ -6,6 +6,8 @@ public class Grade {
 	private Student student;
 	private Course course;
 	
+	private static long counter = 200000;
+	
 	public long getg_ID() {
 		return g_ID;
 	}

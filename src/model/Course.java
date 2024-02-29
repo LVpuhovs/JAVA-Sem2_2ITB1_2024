@@ -22,21 +22,24 @@ public class Course {
 	}
 	
 	public void settitle(String title) {
-		if (title != null && title.matches(""))
+		if (title != null && title.matches("[A-Za-z]+"))
 		this.title = title;
 		else
-			this title = "undefinied";
+			this.title = "undefinied";
 	}
 	public void setc_ID() {
 		this.c_ID = counter;
 		counter++;
 	}
 	public void setCP(int creditPoints) {
-		if (creditPoints > 0 && creditPoints < 4)
+		if (creditPoints > 0 && creditPoints < 20)
 		this.creditPoints = creditPoints;
+		else
+			this.creditPoints = 2;
 	}
 	public void setprofessor(Professor professor) {
-		this.professor = professor;
+		if (professor != null)
+		this.professor = new Professor();
 	}
 	
 	public Course() {
