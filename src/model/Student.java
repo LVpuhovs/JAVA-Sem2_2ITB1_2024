@@ -6,7 +6,7 @@ public class Student {
 	private String name;
 	private String surname;
 	
-	private static long counter = 0;
+	private static long counter = 10000;
 	
 	public long getst_ID() {
 		return st_ID;
@@ -41,5 +41,9 @@ public class Student {
 		setst_ID();
 		setName(name);
 		setSurname(surname);
+	}
+	
+	public String toString() {
+		return st_ID + ": " + name + " " + surname;
 	}
 }
