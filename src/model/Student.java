@@ -30,4 +30,16 @@ public class Student {
 		if (name != null && name.matches("[A-Z]{1}+[a-z]+ "))
 		this.surname = surname;
 	}
+	
+	public Student() {
+		setst_ID();
+		setName("Juris");
+		setSurname("Berzins");
+	}
+	
+	public Student(String name, String surname) {
+		setst_ID();
+		setName(name);
+		setSurname(surname);
+	}
 }
