@@ -47,7 +47,23 @@ public class Professor {
 	
 	
 	//3. constructors
+	public Professor() {
+		setpID();
+		setName("Juris");
+		setSurname("Berzins");
+		setDegree(degree.other);
+	}
+	
+	public Professor(String name, String surname, Degree degree) {
+		setpID();
+		setName(name);
+		setSurname(surname);
+		setDegree(degree);
+	}
 	//4. toString function
+	public String toString() {
+		return pID + ": " +degree + ". " + name + " " + surname;
+	}
 	//5. other function
 	
 	
