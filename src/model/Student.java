@@ -1,19 +1,15 @@
 package model;
 
-public class Professor {
-	//1. variables
+public class Student {
 	
-	private long pID;
+	private long st_ID;
 	private String name;
 	private String surname;
-	private Degree degree;
-	
 	
 	private static long counter = 0;
-	//2. get and set
 	
-	public long getpID() {
-		return pID;
+	public long getst_ID() {
+		return st_ID;
 	}
 	public String getName() {
 		return name;
@@ -21,34 +17,17 @@ public class Professor {
 	public String getSurname() {
 		return surname;
 	}
-	public Degree getDegree() {
-		return degree;
-	}
-	
 	
 	public void setName(String name) {
 		if (name != null && name.matches("[A-Z]{1}+[a-z]+ "))
 		this.name = name;
 	}
-	public void setpID() {
-		this.pID = counter;
+	public void setst_ID() {
+		this.st_ID = counter;
 		counter++;
 	}
 	public void setSurname(String surname) {
 		if (name != null && name.matches("[A-Z]{1}+[a-z]+ "))
 		this.surname = surname;
 	}
-	public void setDegree(Degree degree) {
-		if (degree != null)
-		this.degree = degree;
-		else
-			this.degree  = degree.other;
-	}
-	
-	
-	//3. constructors
-	//4. toString function
-	//5. other function
-	
-	
 }
