@@ -6,13 +6,15 @@ import java.util.ArrayList;
 import model.Course;
 import model.Degree;
 import model.Grade;
+import model.Person;
 import model.Professor;
 import model.Student;
 
 public class MainService {
 	
-		private static  ArrayList<Professor> allProferssors = new ArrayList<Professor>();
-		private static ArrayList<Student> allStudents = new ArrayList<Student>();
+		//private static  ArrayList<Professor> allProferssors = new ArrayList<Professor>();
+		//private static ArrayList<Student> allStudents = new ArrayList<Student>();
+		private static ArrayList<Person> allPersons = new ArrayList<Person>();
 		private static ArrayList<Course> allCourse = new ArrayList<Course>();
 		private static ArrayList<Grade> allGrade = new ArrayList<Grade>();
 		
@@ -25,10 +27,10 @@ public class MainService {
 		Professor pr2 = new Professor("Markuss", "Puhovs", Degree.bsc);
 		
 		
-		allProferssors.add(pr1);
-		allProferssors.add(pr2);
+		allPersons.add(pr1);
+		allPersons.add(pr2);
 		
-		for(Professor tempPro : allProferssors) {
+		for(Person tempPro : allPersons) {
 			System.out.println(tempPro);
 		}
 		
@@ -36,10 +38,10 @@ public class MainService {
 		Student st2 = new Student("Gatis", "Kandis");
 
 		
-		allStudents.add(st1);
-		allStudents.add(st2);
+		allPersons.add(st1);
+		allPersons.add(st2);
 		
-		for(Student tempStu : allStudents) {
+		for(Person tempStu : allPersons) {
 			System.out.println(tempStu);
 		}
 		
@@ -76,8 +78,10 @@ public class MainService {
 				System.out.println(weightedAverage(st2));
 				System.out.println(calculateAvgCourse(c2));
 				System.out.println(calculateCourses(pr2));
-				for (Student temp: allStudents) {
-					System.out.println(temp);
+				for (Person temp: allPersons) {
+					if ( temp instanceof Student) {
+						System.out.println(temp);
+					}
 				}
 				ArrayList<Student> sortStudents = sortStudentsByAVGGrade();
 				for (Student tempst: sortStudents) {
@@ -157,15 +161,15 @@ public class MainService {
 		
 		boolean isFound = false;
 		
-		for (Student temp: allStudents) {
-			if (temp.getName().equals(name) && temp.getSurname().equals(surname)) {
+		for (Person temp: allPersons) {
+			if (temp.getName().equals(name) && temp.getSurname().equals(surname) && temp instanceof Student) {
 				isFound = true;
 				throw new Exception(name + " " + surname + " is already registered");
 			}
 		}
 		
 			Student st = new Student(name, surname);
-			allStudents.add(st);
+			allPersons.add(st);
 		
 	}
 	
@@ -173,9 +177,9 @@ public class MainService {
 	//TODO atgriezt pec personas koda
 	public static Student retrieveStudentbySurname(String surname) throws Exception {
 		if (surname == null) throw new Exception("Problems with input arguments");
-		for (Student temp: allStudents) {
-			if (temp.getSurname().equals(surname)) {
-				return temp;
+		for (Person temp: allPersons) {
+			if (temp.getSurname().equals(surname) && temp instanceof Student) {
+				return (Student) temp;
 			}
 		}
 		throw new Exception(surname + "is not in the system");
@@ -186,8 +190,8 @@ public class MainService {
 	public static void updateStudentByNameAndSurname(String name,String surname,String newSurname) throws Exception {
 		if (name == null || surname == null)  throw new Exception("Problems with input arguments");
 		
-		for (Student temp: allStudents) {
-			if (temp.getName().equals(name) && temp.getSurname().equals(surname)) {
+		for (Person temp: allPersons) {
+			if (temp.getName().equals(name) && temp.getSurname().equals(surname) && temp instanceof Student) {
 				if (!surname.equals(newSurname)){
 					temp.setSurname(newSurname);
 					return;
@@ -201,9 +205,9 @@ public class MainService {
 	public static void deleteByNameAndSurname(String name, String surname) throws Exception {
 		if (name == null || surname == null)  throw new Exception("Problems with input arguments");
 		
-		for (Student temp: allStudents) {
+		for (Person temp: allPersons) {
 			if (temp.getName().equals(name) && temp.getSurname().equals(surname)) {
-				allStudents.remove(temp);
+				allPersons.remove(temp);
 				return;
 			}
 		}
@@ -214,14 +218,16 @@ public class MainService {
 	public static ArrayList<Student> sortStudentsByAVGGrade(){
 		ArrayList<Student> result = new ArrayList<Student>();
 		
-		for (Student temp: allStudents) {
-			try {
-				calculatedGrade(temp);
-				result.add(temp);
-			}
+		for (Person temp: allPersons) {
+			if (temp instanceof Student) {
+				try {
+					calculatedGrade((Student) temp);
+					result.add((Student) temp);
+				}
 			catch (Exception e) {
 				// TODO: handle exception
 				System.out.println(e);
+			}
 			}
 		}
 		
