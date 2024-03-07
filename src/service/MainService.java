@@ -53,13 +53,15 @@ public class MainService {
 		}
 		
 		Grade gr1 = new Grade();
-		Grade gr2 = new Grade(4, c2, st2);
+		Grade gr2 = new Grade(4, c1, st2);
 		Grade gr3 = new Grade(10, c2, st2);
+		Grade gr4 = new Grade(5, c2, st1);
 		
 		
 		allGrade.add(gr1);
 		allGrade.add(gr2);
 		allGrade.add(gr3);
+		allGrade.add(gr4);
 		
 		for(Grade temp : allGrade) {
 			System.out.println(temp);
@@ -69,6 +71,7 @@ public class MainService {
 			try {
 				System.out.println(calculatedGrade(st2));
 				System.out.println(weightedAverage(st2));
+				System.out.println(calculateAvgCourse(c2));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -105,6 +108,22 @@ public class MainService {
 			}
 		}
 		if (howMany == 0) throw new Exception("There are no course");
+		return sum/howMany;
+	}
+	
+	public static float calculateAvgCourse(Course course) throws Exception {
+		if (course == null) throw new Exception("Problems with course input");
+		float sum = 0;
+		int howMany = 0;
+		
+		for (Grade tempgr: allGrade) {
+			if(tempgr.getcourse().equals(course)) {
+				sum += tempgr.getvalue();
+				howMany++;
+			}
+		}
+		if (howMany == 0) throw new Exception("There are no grades in this course");
+		
 		return sum/howMany;
 	}
 
