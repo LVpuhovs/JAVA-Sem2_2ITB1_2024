@@ -145,8 +145,10 @@ public class MainService {
 		int howMany = 0;
 		
 		for (Course tempgr: allCourse) {
-			if (tempgr.getprofessor().equals(professor)) {
+			for(Professor pr: tempgr.getprofessor()) {
+			if (pr.equals(professor)) {
 				howMany++;
+			}
 			}
 		}
 		if (howMany == 0) throw new Exception("There are no course for this professor");

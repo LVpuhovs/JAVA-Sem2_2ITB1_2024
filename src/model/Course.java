@@ -7,7 +7,7 @@ public class Course {
 	private long c_ID;
 	private String title;
 	private int creditPoints;
-	private ArrayList<Professor> professors;
+	private ArrayList<Professor> professors = new ArrayList<Professor>();
 	
 	private static long counter = 100000;
 	
