@@ -203,4 +203,35 @@ public class MainService {
 		
 		throw new Exception(surname + "is not in the system");
 	}
+	
+	public static ArrayList<Student> sortStudentsByAVGGrade(){
+		ArrayList<Student> result = new ArrayList<Student>();
+		
+		for (Student temp: allStudents) {
+			try {
+				calculatedGrade(temp);
+				result.add(temp);
+			}
+			catch (Exception e) {
+				// TODO: handle exception
+				System.out.println(e);
+			}
+		}
+		
+		for (int i = 0; i < result.size();i++) {
+			for (int j = 0; j < result.size();j++) {
+				try {
+					if (calculatedGrade(result.get(i)) < calculatedGrade(result.get(j))) {
+						Student temp = result.get(i);
+						result.set(i,result.get(j));
+						result.set(j, temp);
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return result;
+	}
 }
