@@ -39,7 +39,10 @@ public class Course {
 	}
 	public void setprofessor(Professor professor) {
 		if (professor != null)
-		this.professor = new Professor();
+			this.professor = professor;
+		else
+		
+			this.professor = new Professor();
 	}
 	
 	public Course() {
@@ -49,7 +52,7 @@ public class Course {
 		setprofessor(new Professor());
 	}
 	
-	public Course(String title,int creditPoints, Professor professor) {
+	public Course(String title, int creditPoints, Professor professor) {
 		setc_ID();
 		settitle(title);
 		setCP(creditPoints);

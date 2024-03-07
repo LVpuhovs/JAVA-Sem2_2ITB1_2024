@@ -23,6 +23,7 @@ public class MainService {
 		Professor pr1 = new Professor();
 		Professor pr2 = new Professor("Markuss", "Puhovs", Degree.bsc);
 		
+		
 		allProferssors.add(pr1);
 		allProferssors.add(pr2);
 		
@@ -44,9 +45,11 @@ public class MainService {
 		
 		Course c1 = new Course();
 		Course c2 =  new Course("Datu strukturas un pamatalgoritmi", 2 , pr2);
+		Course c3 = new Course("Programmaturas Inzenierija", 2, pr2);
 		
 		allCourse.add(c1);
 		allCourse.add(c2);
+		allCourse.add(c3);
 		
 		for(Course temp : allCourse) {
 			System.out.println(temp);
@@ -72,6 +75,7 @@ public class MainService {
 				System.out.println(calculatedGrade(st2));
 				System.out.println(weightedAverage(st2));
 				System.out.println(calculateAvgCourse(c2));
+				System.out.println(calculateCourses(pr2));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -125,6 +129,37 @@ public class MainService {
 		if (howMany == 0) throw new Exception("There are no grades in this course");
 		
 		return sum/howMany;
+	}
+	public static long calculateCourses(Professor professor) throws Exception {
+		if (professor == null) throw new Exception("Problems with course input");
+		int howMany = 0;
+		
+		for (Course tempgr: allCourse) {
+			if (tempgr.getprofessor().equals(professor)) {
+				howMany++;
+			}
+		}
+		if (howMany == 0) throw new Exception("There are no course for this professor");
+		return howMany;
+	}
+	
+	// create
+	// TODO pielikt personas kodu
+	public static void createStudent(String name, String surname) throws Exception {
+		if (name == null || surname == null)  throw new Exception("Problems with input arguments");
+		
+		boolean isFound = false;
+		
+		for (Student temp: allStudents) {
+			if (temp.getName().equals(name) && temp.getSurname().equals(surname)) {
+				isFound = true;
+				throw new Exception(name + " " + surname + " is already registered");
+			}
+		}
+		
+			Student st = new Student(name, surname);
+			allStudents.add(st);
+		
 	}
 
 }
