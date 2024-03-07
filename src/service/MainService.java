@@ -1,5 +1,6 @@
 package service;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import model.Course;
@@ -76,6 +77,13 @@ public class MainService {
 				System.out.println(weightedAverage(st2));
 				System.out.println(calculateAvgCourse(c2));
 				System.out.println(calculateCourses(pr2));
+				for (Student temp: allStudents) {
+					System.out.println(temp);
+				}
+				ArrayList<Student> sortStudents = sortStudentsByAVGGrade();
+				for (Student tempst: sortStudents) {
+					System.out.println(tempst);
+				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
