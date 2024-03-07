@@ -1,7 +1,7 @@
 package service;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import model.Course;
 import model.Degree;
@@ -45,11 +45,13 @@ public class MainService {
 		}
 		
 		Course c1 = new Course();
-		Course c2 =  new Course("Datu strukturas un pamatalgoritmi", 2 , pr2);
-		Course c3 = new Course("Programmaturas Inzenierija", 2, pr2);
+		Course c2 =  new Course("Datu strukturas un pamatalgoritmi", 2 , new ArrayList<Professor>(Arrays.asList(pr2)));
+		Course c3 = new Course("Programmaturas Inzenierija", 2, new ArrayList<Professor>(Arrays.asList(pr2)));
+		Course c4 = new Course("Datorsistemu arhitektura", 2, new ArrayList<Professor>(Arrays.asList(pr1,pr2)));
 		
 		allCourse.add(c1);
 		allCourse.add(c2);
+		allCourse.add(c3);
 		allCourse.add(c3);
 		
 		for(Course temp : allCourse) {

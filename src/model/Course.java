@@ -1,10 +1,13 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Course {
 	private long c_ID;
 	private String title;
 	private int creditPoints;
-	private Professor professor;
+	private ArrayList<Professor> professors;
 	
 	private static long counter = 100000;
 	
@@ -17,8 +20,8 @@ public class Course {
 	public int getCP() {
 		return creditPoints;
 	}
-	public Professor getprofessor() {
-		return professor;
+	public ArrayList<Professor> getprofessor() {
+		return professors;
 	}
 	
 	public void settitle(String title) {
@@ -37,29 +40,40 @@ public class Course {
 		else
 			this.creditPoints = 2;
 	}
-	public void setprofessor(Professor professor) {
-		if (professor != null)
-			this.professor = professor;
+	public void setprofessor(ArrayList<Professor> professors) {
+		if (professors != null)
+			this.professors = professors;
 		else
 		
-			this.professor = new Professor();
+			this.professors = new ArrayList<Professor>(Arrays.asList(new Professor()));
 	}
 	
 	public Course() {
 		setc_ID();
 		settitle("prog JAVA");
 		setCP(4);
-		setprofessor(new Professor());
+		ArrayList<Professor> temp = new ArrayList<Professor>(Arrays.asList(new Professor()));
 	}
 	
-	public Course(String title, int creditPoints, Professor professor) {
+	public Course(String title, int creditPoints, ArrayList<Professor>professors) {
 		setc_ID();
 		settitle(title);
 		setCP(creditPoints);
-		setprofessor(professor);
+		setprofessor(professors);
 	}
 	
 	public String toString() {
-		return c_ID + ": " + title + "(" + creditPoints+ ") KP, " + professor;
+		return c_ID + ": " + title + "(" + creditPoints+ ") KP, " + professors;
+	}
+	
+	public void addProfessor(Professor professor) {
+		if (!professors.contains(professor)) {
+			professors.add(professor);
+		}
+	}
+	public void removeProfessor(Professor professor) {
+		if (!professors.contains(professor)) {
+			professors.remove(professor);
+		}
 	}
 }
