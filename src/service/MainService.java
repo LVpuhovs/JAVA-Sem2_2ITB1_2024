@@ -175,7 +175,7 @@ public class MainService {
 	}
 	
 	//TODO retrieve all students - pec nepieciesamibas
-	
+	//update
 	public static void updateStudentByNameAndSurname(String name,String surname,String newSurname) throws Exception {
 		if (name == null || surname == null)  throw new Exception("Problems with input arguments");
 		
@@ -190,5 +190,17 @@ public class MainService {
 		throw new Exception(surname + "is not in the system");
 	}
 	
-
+	//delete
+	public static void deleteByNameAndSurname(String name, String surname) throws Exception {
+		if (name == null || surname == null)  throw new Exception("Problems with input arguments");
+		
+		for (Student temp: allStudents) {
+			if (temp.getName().equals(name) && temp.getSurname().equals(surname)) {
+				allStudents.remove(temp);
+				return;
+			}
+		}
+		
+		throw new Exception(surname + "is not in the system");
+	}
 }
