@@ -34,8 +34,7 @@ public class MainService {
 		
 		Student st1 = new Student();
 		Student st2 = new Student("Gatis", "Kandis");
-		System.out.println(st1);
-		System.out.println(st2);
+
 		
 		allStudents.add(st1);
 		allStudents.add(st2);
