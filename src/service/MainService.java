@@ -173,5 +173,22 @@ public class MainService {
 		}
 		throw new Exception(surname + "is not in the system");
 	}
+	
+	//TODO retrieve all students - pec nepieciesamibas
+	
+	public static void updateStudentByNameAndSurname(String name,String surname,String newSurname) throws Exception {
+		if (name == null || surname == null)  throw new Exception("Problems with input arguments");
+		
+		for (Student temp: allStudents) {
+			if (temp.getName().equals(name) && temp.getSurname().equals(surname)) {
+				if (!surname.equals(newSurname)){
+					temp.setSurname(newSurname);
+					return;
+				}
+			}
+		}
+		throw new Exception(surname + "is not in the system");
+	}
+	
 
 }
