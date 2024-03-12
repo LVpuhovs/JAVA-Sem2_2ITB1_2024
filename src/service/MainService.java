@@ -62,12 +62,14 @@ public class MainService {
 		Grade gr2 = new Grade(4, c1, st2);
 		Grade gr3 = new Grade(10, c2, st2);
 		Grade gr4 = new Grade(5, c2, st1);
+	
 		
 		
 		allGrade.add(gr1);
 		allGrade.add(gr2);
 		allGrade.add(gr3);
 		allGrade.add(gr4);
+		
 		
 		for(Grade temp : allGrade) {
 			System.out.println(temp);
@@ -79,6 +81,12 @@ public class MainService {
 				System.out.println(weightedAverage(st2));
 				System.out.println(calculateAvgCourse(c2));
 				System.out.println(calculateCourses(pr2));
+				createStudent("Karlis", "Akmens", "1234-1234");
+				System.out.println(retrieveStudentByPersKod("1234-1234"));
+				
+				Grade gr5 = new Grade(4,c2,retrieveStudentByPersKod("1234-1234"));
+				allGrade.add(gr5);
+				System.out.println(gr5);
 				for (Student temp: allStudents) {
 					System.out.println(temp);
 				}
@@ -157,19 +165,20 @@ public class MainService {
 	
 	// create
 	// TODO pielikt personas kodu
-	public static void createStudent(String name, String surname) throws Exception {
-		if (name == null || surname == null)  throw new Exception("Problems with input arguments");
+	public static void createStudent(String name, String surname, String ID_kods) throws Exception {
+		if (name == null || surname == null || ID_kods == null)  throw new Exception("Problems with input arguments");
 		
 		boolean isFound = false;
 		
 		for (Student temp: allStudents) {
-			if (temp.getName().equals(name) && temp.getSurname().equals(surname)) {
+			if (temp.getName().equals(name) && temp.getSurname().equals(surname) && temp.getID_kods().equals(ID_kods)) {
 				isFound = true;
 				throw new Exception(name + " " + surname + " is already registered");
 			}
 		}
 		
 			Student st = new Student(name, surname);
+			st.setID_kods(ID_kods);
 			allStudents.add(st);
 		
 	}
@@ -184,6 +193,16 @@ public class MainService {
 			}
 		}
 		throw new Exception(surname + "is not in the system");
+	}
+	
+	public static Student retrieveStudentByPersKod(String ID_kods) throws Exception {
+		if (ID_kods == null) throw new Exception("Problems with input arguments");
+		for (Student temp: allStudents) {
+			String tempID = temp.getID_kods();
+	        if (tempID != null && tempID.equals(ID_kods))
+				return temp;
+		}
+		throw new Exception("Student with National ID: " + ID_kods + " is not in the system");
 	}
 	
 	//TODO retrieve all students - pec nepieciesamibas

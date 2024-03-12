@@ -5,6 +5,7 @@ public class Student {
 	private long st_ID;
 	private String name;
 	private String surname;
+	private String ID_kods;
 	
 	private static long counter = 10000;
 	
@@ -16,6 +17,9 @@ public class Student {
 	}
 	public String getSurname() {
 		return surname;
+	}
+	public String getID_kods() {
+		return ID_kods;
 	}
 	
 	public void setName(String name) {
@@ -29,6 +33,10 @@ public class Student {
 	public void setSurname(String surname) {
 		if (name != null && name.matches("[A-Z]{1}+[a-z]+"))
 		this.surname = surname;
+	}
+	public void setID_kods(String ID_kods) {
+		if (ID_kods != null && ID_kods.matches("[0-9]{4}[-]+[0-9]{4}"))
+		this.ID_kods = ID_kods;
 	}
 	
 	public Student() {
